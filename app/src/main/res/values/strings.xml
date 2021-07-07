@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title">Weather API</string>
+    <string name="search">Pesquisar</string>
+    <string name="local">Tempo Local</string>
+    <string name="weathers">Climas Salvos</string>
+    <string name="ambient">Ar Ambiente</string>
+</resources>
