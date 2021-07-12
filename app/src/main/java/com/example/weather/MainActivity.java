@@ -3,6 +3,7 @@ package com.example.weather;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -24,28 +25,29 @@ public class MainActivity extends AppCompatActivity {
         cardSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast("Teste botao Pesquisar");
+                Intent i = new Intent(MainActivity.this, SearchWeather.class);
+                startActivity(i);
             }
         });
 
         cardLocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast("Teste botao Local");
+                Toast("Em desenvolvimento");
             }
         });
 
         cardSensor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast("Teste botao Condição ambiente");
+                Toast("Em desenvolvimento");
             }
         });
 
         cardWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast("Teste botao Climas");
+                Toast("Em desenvolvimento");
             }
         });
     }
