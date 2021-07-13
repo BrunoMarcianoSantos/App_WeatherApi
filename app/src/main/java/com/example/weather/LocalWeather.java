@@ -157,7 +157,7 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
             Toast.makeText(this, "Aguarde...", Toast.LENGTH_SHORT).show();
         } else {
             if (city.length() == 0) {
-                Toast.makeText(this, "Digite uma cidade válida!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Ops, a cidade não foi encontrada, tente novamente!", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Verifique a conexão com a internet!", Toast.LENGTH_LONG).show();
             }
