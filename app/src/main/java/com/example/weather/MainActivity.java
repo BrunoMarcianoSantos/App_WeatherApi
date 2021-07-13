@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         cardLocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast("Em desenvolvimento");
+                Intent i = new Intent(MainActivity.this, LocalWeather.class);
+                startActivity(i);;
             }
         });
 

@@ -2,12 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
-
-    tools:context=".SearchWeather">
+    android:orientation="vertical"
+    tools:context=".LocalWeather">
 
     <RelativeLayout android:id="@+id/mainContainer" android:layout_width="match_parent"
         android:layout_height="match_parent" android:visibility="visible">
@@ -18,19 +17,16 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <EditText
-                android:id="@+id/searchcity"
-                android:layout_width="230dp"
+            <TextView
+                android:id="@+id/citycountry"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Pesquisar Cidade"
-                android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:inputType="text"/>
-                <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search"
-                    android:onClick="Search"/>
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif"
+                android:text="Cidade, PS"
+                android:textSize="30sp" />
+
 
         </LinearLayout>
 
@@ -189,8 +185,9 @@
         </LinearLayout>
     </RelativeLayout>
 
+
     <ProgressBar android:id="@+id/loader" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_centerInParent="true"
         android:visibility="gone"/>
 
-</RelativeLayout >
+</RelativeLayout>
