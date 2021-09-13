@@ -22,34 +22,21 @@ public class MainActivity extends AppCompatActivity {
         cardSensor = findViewById(R.id.cardSensor);
         cardWeather = findViewById(R.id.cardWeather);
 
-        cardSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SearchWeather.class);
-                startActivity(i);
-            }
+        cardSearch.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, SearchWeather.class);
+            startActivity(i);
         });
 
-        cardLocal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, LocalWeather.class);
-                startActivity(i);;
-            }
+        cardLocal.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, LocalWeather.class);
+            startActivity(i);;
         });
 
-        cardSensor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast("Em desenvolvimento");
-            }
-        });
+        cardSensor.setOnClickListener(v -> Toast("Em desenvolvimento"));
 
-        cardWeather.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast("Em desenvolvimento");
-            }
+        cardWeather.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, DisplayWeather.class);
+            startActivity(i);;
         });
     }
 

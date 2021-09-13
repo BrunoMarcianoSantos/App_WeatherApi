@@ -2,6 +2,7 @@ package com.example.weather;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.loader.app.LoaderManager;
@@ -34,8 +35,16 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class LocalWeather extends AppCompatActivity implements FetchAddressTask.OnTaskCompleted,
         LoaderManager.LoaderCallbacks<String> {
+
+    String condflocal, sunalocal, setalocal, tempatualflocal, tempmaxflocal, tempminflocal,
+            speedflocal, likeflocal, umidflocal, pressflocal, currentDatelocal, countrylocal,
+            namelocal, iconlocal;
 
     TextView condition, temp, mintemp, maxtemp, citycountry,
             sunrise, sunset, wind, pressure, humidity, feels;
@@ -154,7 +163,6 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
             Bundle queryBundle = new Bundle();
             queryBundle.putString("queryString", city);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
-            Toast.makeText(this, "Aguarde...", Toast.LENGTH_SHORT).show();
         } else {
             if (city.length() == 0) {
                 Toast.makeText(this, "Ops, a cidade não foi encontrada, tente novamente!", Toast.LENGTH_LONG).show();
@@ -192,37 +200,47 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
             double tempmax = main.getDouble("temp_max");
             double tempmin = main.getDouble("temp_min");
             String cond = weather.getString("description");
-            String icon = weather.getString("icon");
+            iconlocal = weather.getString("icon");
             double like = main.getDouble("feels_like");
             int umid = main.getInt("humidity");
             float press = main.getInt("pressure");
             long set = sys.getLong("sunset");
             long suns = sys.getLong("sunrise");
             String speed = winds.getString("speed");
-            String country = sys.getString("country");
-            String name = jsonObject.getString("name");
+            countrylocal = sys.getString("country");
+            namelocal = jsonObject.getString("name");
 
             try {
-                String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
+                String iconUrl = "https://openweathermap.org/img/wn/" + iconlocal + "@4x.png";
                 Picasso.get().load(iconUrl).into(iconimg);
             } catch (Exception e) {
                 Toast.makeText(this, "Erro" + e, Toast.LENGTH_LONG).show();
             }
 
-            citycountry.setText(name + ", " + country);
-            temp.setText(String.format("%.0f", tempatual) + "°C");
-            maxtemp.setText("Máxima: " + String.format("%.0f", tempmax) + "°C");
-            mintemp.setText("Mínima: " + String.format("%.0f", tempmin) + "°C");
-            String condf = cond.substring(0, 1).toUpperCase() + cond.substring(1).toLowerCase();
-            condition.setText(condf);
-            wind.setText(speed + " M/s");
-            feels.setText(String.format("%.0f", like) + "°C");
-            humidity.setText(umid + "%");
-            pressure.setText(press + "hPa");
-            String suna = RequestHTTP.unixConvert(suns);
-            sunrise.setText(suna);
-            String seta = RequestHTTP.unixConvert(set);
-            sunset.setText(seta);
+            condflocal = cond.substring(0, 1).toUpperCase() + cond.substring(1).toLowerCase();
+            sunalocal = RequestHTTP.unixConvert(suns);
+            setalocal = RequestHTTP.unixConvert(set);
+            tempatualflocal = String.format("%.0f", tempatual) + "°C";
+            tempmaxflocal = "Máxima: " + String.format("%.0f", tempmax) + "°C";
+            tempminflocal = "Mínima: " + String.format("%.0f", tempmin) + "°C";
+            speedflocal = speed + " M/s";
+            likeflocal = String.format("%.0f", like) + "°C";
+            umidflocal = umid + "%";
+            pressflocal = press + "hPa";
+            currentDatelocal = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date());
+
+            citycountry.setText(namelocal + ", " + countrylocal);
+            temp.setText(tempatualflocal);
+            maxtemp.setText(tempmaxflocal);
+            mintemp.setText(tempminflocal);
+            condition.setText(condflocal);
+            wind.setText(speedflocal);
+            feels.setText(likeflocal);
+            humidity.setText(umidflocal);
+            pressure.setText(pressflocal);
+            sunrise.setText(sunalocal);
+            sunset.setText(setalocal);
+
 
             pb.setVisibility(View.GONE);
             rl.setVisibility(View.VISIBLE);
@@ -236,5 +254,42 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
     @Override
     public void onLoaderReset(@NonNull Loader<String> loader) {
 
+    }
+
+    public void SaveDbWeatherLocal(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Salvar ?");
+        builder.setMessage("Salvar esse clima ?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            try {
+                DataBaseHelper db = new DataBaseHelper(this);
+                Weather w = new Weather();
+                //w.setId(++increment);
+                w.setCity(namelocal.trim());
+                w.setCountry(countrylocal.trim());
+                w.setTempNow(tempatualflocal.trim());
+                w.setTempMax(tempmaxflocal.trim());
+                w.setTempMin(tempminflocal.trim());
+                w.setCondition(condflocal.trim());
+                w.setSunrise(sunalocal.trim());
+                w.setSunset(setalocal.trim());
+                w.setWind(speedflocal.trim());
+                w.setPressure(pressflocal.trim());
+                w.setHumidity(umidflocal.trim());
+                w.setFeels(likeflocal.trim());
+                w.setIcon(iconlocal.trim());
+                w.setDate(currentDatelocal.trim());
+                db.addWeather(w);
+            }catch(Exception e){
+                Toast.makeText(this, "Erro" + e, Toast.LENGTH_LONG).show();
+            }
+        });
+        builder.setNegativeButton("Não", (dialogInterface, i) -> {
+        });
+        builder.create().show();
+    }
+
+    public void SendApiLocal(View view){
+        Toast.makeText(this, "Em desenvolvimento", Toast.LENGTH_LONG).show();
     }
 }

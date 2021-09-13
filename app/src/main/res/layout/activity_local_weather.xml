@@ -11,11 +11,39 @@
     <RelativeLayout android:id="@+id/mainContainer" android:layout_width="match_parent"
         android:layout_height="match_parent" android:visibility="visible">
         <LinearLayout
-            android:id="@+id/containersearch"
+            android:id="@+id/containeraction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
+
+            <ImageView
+                android:id="@+id/apiweatherlocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_api"
+                android:clickable="true"
+                android:onClick="SendApiLocal"/>
+
+            <ImageView
+                android:id="@+id/saveweatherlocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_save"
+                android:layout_marginLeft="200dp"
+                android:clickable="true"
+                android:onClick="SaveDbWeatherLocal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containersearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@id/containeraction">
 
             <TextView
                 android:id="@+id/citycountry"

@@ -15,8 +15,7 @@
             android:id="@+id/containersearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/searchcity"
@@ -25,12 +24,35 @@
                 android:hint="Pesquisar Cidade"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:inputType="text"/>
-                <ImageButton
+                android:inputType="text"
+                />
+
+            <ImageButton
+                android:id="@+id/searchweather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search"
-                    android:onClick="Search"/>
+                android:onClick="Search"
+                />
+
+            <ImageView
+                android:id="@+id/apiweather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_api"
+                android:clickable="true"
+                android:onClick="SendApi"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/saveweather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_save"
+                android:layout_marginLeft="200dp"
+                android:clickable="true"
+                android:onClick="SaveDbWeather"
+                android:visibility="gone" />
 
         </LinearLayout>
 

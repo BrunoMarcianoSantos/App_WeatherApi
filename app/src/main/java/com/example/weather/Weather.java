@@ -3,27 +3,23 @@ package com.example.weather;
 import java.io.Serializable;
 
 public class Weather implements Serializable {
+
     private Integer id;
     private String city;
-    private String temp;
+    private String country;
+    private String tempNow;
     private String tempMax;
     private String tempMin;
     private String condition;
-    private Long sunrise;
-    private Long sunset;
-    private Long timezone;
+    private String sunrise;
+    private String sunset;
     private String wind;
     private String pressure;
     private String humidity;
     private String feels;
+    private String icon;
+    private String date;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCity() {
         return city;
@@ -33,12 +29,20 @@ public class Weather implements Serializable {
         this.city = city;
     }
 
-    public String getTemp() {
-        return temp;
+    public String getCountry() {
+        return country;
     }
 
-    public void setTemp(String temp) {
-        this.temp = temp;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getTempNow() {
+        return tempNow;
+    }
+
+    public void setTempNow(String tempNow) {
+        this.tempNow = tempNow;
     }
 
     public String getTempMax() {
@@ -65,28 +69,20 @@ public class Weather implements Serializable {
         this.condition = condition;
     }
 
-    public Long getSunrise() {
+    public String getSunrise() {
         return sunrise;
     }
 
-    public void setSunrise(Long sunrise) {
+    public void setSunrise(String sunrise) {
         this.sunrise = sunrise;
     }
 
-    public Long getSunset() {
+    public String getSunset() {
         return sunset;
     }
 
-    public void setSunset(Long sunset) {
+    public void setSunset(String sunset) {
         this.sunset = sunset;
-    }
-
-    public Long getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(Long timezone) {
-        this.timezone = timezone;
     }
 
     public String getWind() {
@@ -119,5 +115,29 @@ public class Weather implements Serializable {
 
     public void setFeels(String feels) {
         this.feels = feels;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

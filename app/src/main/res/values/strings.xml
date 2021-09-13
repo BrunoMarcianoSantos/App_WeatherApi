@@ -5,4 +5,6 @@
     <string name="local">Tempo Local</string>
     <string name="weathers">Climas Salvos</string>
     <string name="ambient">Ar Ambiente</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
