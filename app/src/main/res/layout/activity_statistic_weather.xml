@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatisticWeather"
+    android:padding="25dp">
+
+    <LinearLayout
+        android:id="@+id/linearserach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchcityapi"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:hint="Pesquisar Cidade"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:inputType="text"
+            />
+
+        <ImageButton
+            android:id="@+id/searchweather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:background="none"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearid"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearserach"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="Id:"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/txtidapi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="end"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lineardisc"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearid"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="Discrepâncias:"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/txtdiscrepancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="end"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/lineardisc"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="Concordâncias:"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/txtconcordancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="end"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

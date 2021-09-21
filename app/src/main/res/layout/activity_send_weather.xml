@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".SendWeather">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Como o céu está?"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/txtcondapi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="12sp"
+                android:padding="10dp"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            android:background="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:showDividers="none">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/toggleceulimpo"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Céu Limpo"
+                app:icon="@drawable/ceulimpo"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglealgumasnuves"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Algumas Nuvens"
+                app:icon="@drawable/algumasnuvens"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglenublado"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Nublado"
+                app:icon="@drawable/nublado"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggletwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            android:background="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:showDividers="none">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglechuvisco"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Chuva leve"
+                app:icon="@drawable/garoaleve"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglechuva"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Chuva"
+                app:icon="@drawable/chuva"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglechuvaforte"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Chuva forte"
+                app:icon="@drawable/garoaleve"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/togglethree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            android:background="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:showDividers="none">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/toggletempestade"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Tempestade"
+                app:icon="@drawable/tempestade"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/toggleneve"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Neve"
+                app:icon="@drawable/neve"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/togglenevoa"
+                android:layout_gravity="center"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Névoa"
+                app:icon="@drawable/nevoa"
+                app:iconGravity="textTop"
+                app:iconSize="35dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                app:iconTintMode="multiply"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/chkcond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:text="Condição Correta"
+            android:layout_marginTop="5dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/txttempsens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura:"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/txttempapi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="12sp"
+                android:padding="10dp"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchsensacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/switchsensacao"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                app:switchPadding="10dp"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/seektempapi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="10"/>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/seeksensacaoapi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="5"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/linearseektemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/txtminseek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/txttempseek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtmaxseek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearseeksensacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtmuitofrio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Muito frio"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/txtfrio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Frio"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtnormal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Normal"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtquente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Quente"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtmuitoquente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Muito quente"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/chktemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:text="Temperatura Correta"
+            android:layout_marginTop="5dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnsendapi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Enviar"
+            android:layout_marginTop="15dp"/>
+
+    </LinearLayout>
+</ScrollView>

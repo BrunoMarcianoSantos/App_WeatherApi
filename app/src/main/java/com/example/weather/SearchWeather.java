@@ -9,6 +9,7 @@ import androidx.loader.content.Loader;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -36,7 +37,8 @@ import java.util.Locale;
 public class SearchWeather extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     String condf, suna, seta, tempatualf, tempmaxf, tempminf, speedf, likef, umidf, pressf,
-            currentDate, country, name, icon;
+            currentDate, country, name, icon, tempatualapi;
+    int tempapif;
     EditText searchcity;
     ImageButton searchweather;
     TextView condition, temp, mintemp, maxtemp,
@@ -155,7 +157,9 @@ public class SearchWeather extends AppCompatActivity implements LoaderManager.Lo
             condf = cond.substring(0, 1).toUpperCase() + cond.substring(1).toLowerCase();
             suna = RequestHTTP.unixConvert(suns);
             seta = RequestHTTP.unixConvert(set);
-            tempatualf = String.format("%.0f", tempatual) + "°C";
+            tempatualapi = String.format("%.0f", tempatual);
+            tempapif = Integer.parseInt(tempatualapi);
+            tempatualf = tempatualapi + "°C";
             tempmaxf = "Máxima: " + String.format("%.0f", tempmax) + "°C";
             tempminf = "Mínima: " + String.format("%.0f", tempmin) + "°C";
             speedf = speed + " M/s";
@@ -229,6 +233,10 @@ public class SearchWeather extends AppCompatActivity implements LoaderManager.Lo
     }
 
     public void SendApi(View view){
-        Toast.makeText(this, "Em desenvolvimento", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, SendWeather.class);
+        intent.putExtra("tempnow", tempapif);
+        intent.putExtra("condition", condf);
+        intent.putExtra("name", name);
+        this.startActivityForResult(intent, 1);
     }
 }

@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView cardSearch, cardLocal, cardSensor, cardWeather;
+    CardView cardSearch, cardLocal, cardSensor, cardWeather, cardApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         cardLocal = findViewById(R.id.cardLocal);
         cardSensor = findViewById(R.id.cardSensor);
         cardWeather = findViewById(R.id.cardWeather);
+        cardApi = findViewById(R.id.cardApi);
 
         cardSearch.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, SearchWeather.class);
@@ -29,14 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
         cardLocal.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, LocalWeather.class);
-            startActivity(i);;
+            startActivity(i);
         });
 
-        cardSensor.setOnClickListener(v -> Toast("Em desenvolvimento"));
+        cardSensor.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, SensorWeather.class);
+            startActivity(i);
+        });
+
+        cardApi.setOnClickListener(v -> Toast("Em desenvolvimento"));
 
         cardWeather.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, DisplayWeather.class);
-            startActivity(i);;
+            startActivity(i);
         });
     }
 

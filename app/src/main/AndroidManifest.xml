@@ -14,6 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Weather">
+        <activity android:name=".StatisticWeather"></activity>
+        <activity android:name=".SensorWeather" />
+        <activity android:name=".SendWeather" />
+
         <receiver android:name=".WeatherWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

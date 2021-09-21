@@ -23,8 +23,7 @@ import com.squareup.picasso.Picasso;
 public class ExpandWeather extends AppCompatActivity {
 
     TextView expandcity, expanddate, expandsunrise, expandsunset, expandwind, expandpressure,
-    expandhumidity, expandfeels, expandtempnow, expandtempmax, expandtempmin, expandcondition,
-    expandid;
+    expandhumidity, expandfeels, expandtempnow, expandtempmax, expandtempmin, expandcondition;
     ImageView expandicon;
     Button dell, share;
 
@@ -63,7 +62,6 @@ public class ExpandWeather extends AppCompatActivity {
         expandtempmax = findViewById(R.id.expandtempmax);
         expandtempmin = findViewById(R.id.expandotempmin);
         expandcondition = findViewById(R.id.expandcondition);
-        expandid = findViewById(R.id.expandid);
         expandicon = findViewById(R.id.expandicon);
         dell = findViewById(R.id.deleteweather);
         share = findViewById(R.id.shareweather);
@@ -102,7 +100,6 @@ public class ExpandWeather extends AppCompatActivity {
             expanddate.setText(date);
             expandfeels.setText(feels);
             expandhumidity.setText(humidity);
-            expandid.setText("Código: " + String.valueOf(id));
             expanddate.setText(date);
             expandpressure.setText(pressure);
             expandsunrise.setText(sunrise);
@@ -111,7 +108,6 @@ public class ExpandWeather extends AppCompatActivity {
             expandtempmin.setText(tempmin);
             expandtempnow.setText(tempnow);
             expandwind.setText(wind);
-            Toast.makeText(ExpandWeather.this, "Qual" + id, Toast.LENGTH_SHORT).show();
 
             try {
                 String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
@@ -121,7 +117,7 @@ public class ExpandWeather extends AppCompatActivity {
             }
             Log.d("Clima", city+" "+id+" "+wind);
         }else{
-            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sem dados", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -145,9 +141,8 @@ public class ExpandWeather extends AppCompatActivity {
     }
 
     public Bitmap takeScreenshot(View view) {
-        View v = view;
-        v.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(v.getDrawingCache());
+        view.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
         return bitmap;
     }
 

@@ -10,6 +10,7 @@ import androidx.loader.content.Loader;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -45,7 +46,7 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
     String condflocal, sunalocal, setalocal, tempatualflocal, tempmaxflocal, tempminflocal,
             speedflocal, likeflocal, umidflocal, pressflocal, currentDatelocal, countrylocal,
             namelocal, iconlocal;
-
+    int tempapif;
     TextView condition, temp, mintemp, maxtemp, citycountry,
             sunrise, sunset, wind, pressure, humidity, feels;
     ImageView iconimg;
@@ -220,6 +221,8 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
             condflocal = cond.substring(0, 1).toUpperCase() + cond.substring(1).toLowerCase();
             sunalocal = RequestHTTP.unixConvert(suns);
             setalocal = RequestHTTP.unixConvert(set);
+            String tempatualapilocal = String.format("%.0f", tempatual);
+            tempapif = Integer.parseInt(tempatualapilocal);
             tempatualflocal = String.format("%.0f", tempatual) + "°C";
             tempmaxflocal = "Máxima: " + String.format("%.0f", tempmax) + "°C";
             tempminflocal = "Mínima: " + String.format("%.0f", tempmin) + "°C";
@@ -290,6 +293,10 @@ public class LocalWeather extends AppCompatActivity implements FetchAddressTask.
     }
 
     public void SendApiLocal(View view){
-        Toast.makeText(this, "Em desenvolvimento", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, SendWeather.class);
+        intent.putExtra("tempnow", tempapif);
+        intent.putExtra("condition", condflocal);
+        intent.putExtra("name", namelocal);
+        this.startActivityForResult(intent, 1);
     }
 }

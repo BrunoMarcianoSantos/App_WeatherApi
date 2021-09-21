@@ -118,7 +118,7 @@
                         />
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Sunrise"
+                        android:textSize="12sp" android:text="@string/nascer"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
                     <TextView android:id="@+id/sunrise" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textSize="14sp"
@@ -133,7 +133,7 @@
                         android:src="@drawable/sunset" app:tint="@color/orange"/>
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Sunset"
+                        android:textSize="12sp" android:text="@string/por"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
                     <TextView android:id="@+id/sunset" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textSize="14sp"
@@ -148,7 +148,7 @@
                         android:src="@drawable/wind" app:tint="@color/orange"/>
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Wind"
+                        android:textSize="12sp" android:text="@string/vento"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
                     <TextView android:id="@+id/wind" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textSize="14sp"
@@ -168,7 +168,7 @@
                         android:src="@drawable/pressure" app:tint="@color/orange"/>
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Pressure"
+                        android:textSize="12sp" android:text="@string/pressao"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
                     <TextView android:id="@+id/pressure" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textSize="14sp"
@@ -183,7 +183,7 @@
                         android:src="@drawable/humidity" app:tint="@color/orange"/>
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Humidity"
+                        android:textSize="12sp" android:text="@string/humidade"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
                     <TextView android:id="@+id/humidity" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textSize="14sp"
@@ -198,7 +198,7 @@
                         android:src="@drawable/info" app:tint="@color/orange"/>
                     <Space android:layout_width="wrap_content" android:layout_height="5dp"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:textSize="12sp" android:text="Sensação"
+                        android:textSize="12sp" android:text="@string/sensacao"
                         android:textColor="@color/black" android:fontFamily="sans-serif"/>
 
                     <TextView

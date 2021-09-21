@@ -56,7 +56,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("current", weather.getDate());
         long result = db.insert("tbl_weather", null, cv);
          if(result == -1){
-             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+             Toast.makeText(context, "Ops! Algum erro ocorreu, tente novamente!", Toast.LENGTH_SHORT).show();
          }else {
              Toast.makeText(context, "Clima de " + weather.getCity() + " foi salvo", Toast.LENGTH_SHORT).show();
          }
@@ -94,9 +94,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete("tbl_weather", "weatherid " + "=" + weatherid, null);
         if(result == -1){
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Ops! Algum erro ocorreu, tente novamente!", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Clima deletado", Toast.LENGTH_SHORT).show();
         }
     }
 }

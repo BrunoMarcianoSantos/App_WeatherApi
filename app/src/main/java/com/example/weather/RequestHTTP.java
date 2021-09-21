@@ -74,6 +74,50 @@ public class RequestHTTP {
         return bookJSONString;
     }
 
+    public static String buscaApi(String query) {
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        String bookJSONString = null;
+
+        try {
+            Uri climaURI = Uri.parse("https://localhost:44319/Local/getLocal?").buildUpon()
+                    .appendQueryParameter("nome", query)
+                    .build();
+            URL requestURL = new URL(climaURI.toString());
+            urlConnection = (HttpURLConnection) requestURL.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            InputStream inputStream = urlConnection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder builder = new StringBuilder();
+            String linha;
+
+            while ((linha = reader.readLine()) != null) {
+                builder.append(linha);
+                builder.append("\n");
+            }
+            if (builder.length() == 0) {
+                return null;
+            }
+            bookJSONString = builder.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Log.d(LOG_TAG, bookJSONString);
+        return bookJSONString;
+    }
+
     public static class CarregaClima extends AsyncTaskLoader<String> {
         private String mQueryString;
 
@@ -92,6 +136,27 @@ public class RequestHTTP {
         @Override
         public String loadInBackground() {
             return buscaClima(mQueryString);
+        }
+    }
+
+    public static class CarregaApi extends AsyncTaskLoader<String> {
+        private String mQueryString;
+
+        CarregaApi(Context context, String queryString) {
+            super(context);
+            mQueryString = queryString;
+        }
+
+        @Override
+        protected void onStartLoading() {
+            super.onStartLoading();
+            forceLoad();
+        }
+
+        @Nullable
+        @Override
+        public String loadInBackground() {
+            return buscaApi(mQueryString);
         }
     }
 
