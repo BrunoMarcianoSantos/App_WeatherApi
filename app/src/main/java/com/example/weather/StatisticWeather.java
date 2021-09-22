@@ -103,9 +103,9 @@ public class StatisticWeather extends AppCompatActivity implements LoaderManager
             int disc = jsonObject.getInt("discrepancias");
             int conc = jsonObject.getInt("concordancias");
 
-            txtid.setText(id);
-            txtconc.setText(conc);
-            txtdisc.setText(disc);
+            /*txtid.setText(id);*/ txtid.setText(String.valueOf(id));
+            /*txtconc.setText(conc);*/ txtconc.setText(String.valueOf(conc));
+            /*txtdisc.setText(disc);*/ txtdisc.setText(String.valueOf(disc));
         } catch (Exception e) {
             Toast.makeText(this, "Erro" + e, Toast.LENGTH_LONG).show();
             e.printStackTrace();

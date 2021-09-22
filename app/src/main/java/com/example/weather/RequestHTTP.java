@@ -18,6 +18,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
+
 public class RequestHTTP {
 
     private static final String LOG_TAG = RequestHTTP.class.getSimpleName();
@@ -80,11 +83,12 @@ public class RequestHTTP {
         String bookJSONString = null;
 
         try {
-            Uri climaURI = Uri.parse("https://localhost:44319/Local/getLocal?").buildUpon()
+            Uri climaURI = Uri.parse("http://192.168.15.9:58838/Local/getLocal?").buildUpon()
                     .appendQueryParameter("nome", query)
                     .build();
             URL requestURL = new URL(climaURI.toString());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
+
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             InputStream inputStream = urlConnection.getInputStream();

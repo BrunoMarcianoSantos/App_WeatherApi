@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        cardApi.setOnClickListener(v -> Toast("Em desenvolvimento"));
+        cardApi.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, StatisticWeather.class);
+            startActivity(i);});
 
         cardWeather.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, DisplayWeather.class);

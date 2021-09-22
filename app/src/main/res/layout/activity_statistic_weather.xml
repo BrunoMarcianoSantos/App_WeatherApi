@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatisticWeather"
-    android:padding="25dp">
+    android:padding="25dp"
+    tools:context=".StatisticWeather">
 
     <LinearLayout
         android:id="@+id/linearserach"
@@ -17,100 +17,92 @@
             android:id="@+id/searchcityapi"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:hint="Pesquisar Cidade"
-            android:textColor="@color/black"
             android:layout_gravity="center"
+            android:hint="Pesquisar Cidade"
             android:inputType="text"
-            />
+            android:textColor="@color/black" />
 
         <ImageButton
             android:id="@+id/searchweather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search"
-            android:background="none"
-            />
+            android:onClick="SearchApi"
+            android:src="@drawable/ic_search" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearid"
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/linearserach"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <TextView
             android:layout_width="230dp"
             android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="Id:"
             android:textColor="@color/black"
-            android:gravity="start"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtidapi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:gravity="end"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lineardisc"
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/linearid"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <TextView
             android:layout_width="230dp"
             android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="Discrepâncias:"
             android:textColor="@color/black"
-            android:gravity="start"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtdiscrepancia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:gravity="end"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/lineardisc"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <TextView
             android:layout_width="230dp"
             android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="Concordâncias:"
             android:textColor="@color/black"
-            android:gravity="start"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtconcordancia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:gravity="end"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>
