@@ -16,4 +16,5 @@
     <string name="sensacao">Sensação</string>
     <string name="temperatura">Temperatura</string>
     <string name="estatisticas">Estatísticas</string>
+    <string name="config">Configurações</string>
 </resources>

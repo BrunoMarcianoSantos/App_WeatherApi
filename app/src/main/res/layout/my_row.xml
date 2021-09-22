@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="São Paulo, BR"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginRight="10dp"/>
 
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:text="Céu limpo"
                     android:layout_marginRight="10dp"
-                    android:textSize="16sp"/>
+                    android:textSize="13sp"/>
 
             </LinearLayout>
 

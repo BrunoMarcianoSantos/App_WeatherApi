@@ -99,4 +99,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Clima deletado", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("tbl_weather", null, null);
+    }
 }

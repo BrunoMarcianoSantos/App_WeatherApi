@@ -205,9 +205,9 @@ public class SendWeather extends AppCompatActivity {
             sktempatual.setValueFrom(newmin);
             sktempatual.setValueTo(newmax);
 
-            minseek.setText(newmin + " °C");
-            maxseek.setText(newmax  + " °C");
-            tempseek.setText(tempapiatual + " °C");
+            minseek.setText(String.format("%d °C", newmin));
+            maxseek.setText(String.format("%d °C", newmax));
+            tempseek.setText(String.format("%d °C", tempapiatual));
 
         }catch(Exception e){
             Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
