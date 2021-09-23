@@ -248,16 +248,45 @@ public class SendWeather extends AppCompatActivity {
         tempapiatualf = String.valueOf(tempapiatual);
         condapif = condapi.getText().toString();
         tempapif = tempapi.getText().toString();
-        try {
-            if (condapif.length() != 0 && tempapif.length() != 0) {
-                String[] dadoscoletados = {namewapi, condwapi, tempapiatualf, condapif, tempapif};
-                new HTTPReqTask().execute(dadoscoletados);
-            }else{
-                Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
-            }
+        if (condapif.equals("Correto")) {
+            try {
+                if (tempapif.length() != 0) {
+                    String url = "https://slaoq.com";
+                    String[] dadoscoletados = {namewapi, condwapi, tempapiatualf, condapif, tempapif, url};
+                    new HTTPReqTask().execute(dadoscoletados);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
 
-        }catch(Exception e){
-            Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
+        } else if (tempapif.equals("Correto")){
+            try {
+                if (condapif.length() != 0) {
+                    String url = "https://slaoq.com";
+                    String[] dadoscoletados = {namewapi, condwapi, tempapiatualf, condapif, tempapif, url};
+                    new HTTPReqTask().execute(dadoscoletados);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
+        } else {
+            try {
+                if (condapif.length() != 0 && tempapif.length() != 0) {
+                    String url = "https://slaoq.com";
+                    String[] dadoscoletados = {namewapi, condwapi, tempapiatualf, condapif, tempapif, url};
+                    new HTTPReqTask().execute(dadoscoletados);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -271,12 +300,13 @@ public class SendWeather extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... params) {
             HttpURLConnection urlConnection = null;
-            String nameapi, condapi, tempapi, conduser, tempuser;
+            String nameapi, condapi, tempapi, conduser, tempuser, qurl;
             nameapi = params[0];
             condapi = params[1];
             tempapi = params[2];
             conduser = params[3];
             tempuser = params[4];
+            qurl = params[5];
 
             try {
                 JsonObject postData = new JsonObject();
@@ -286,7 +316,7 @@ public class SendWeather extends AppCompatActivity {
                 postData.addProperty("conduser", conduser);
                 postData.addProperty("tempuser", tempuser);
 
-                URL url = new URL("https://reqres.in/api/users");
+                URL url = new URL(qurl);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestMethod("POST");
