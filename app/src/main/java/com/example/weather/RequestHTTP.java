@@ -83,7 +83,7 @@ public class RequestHTTP {
         String bookJSONString = null;
 
         try {
-            Uri climaURI = Uri.parse("http://192.168.15.9:58838/Local/getLocal?").buildUpon()
+            Uri climaURI = Uri.parse("http://192.168.15.9:51067/Local/getLocal?").buildUpon()
                     .appendQueryParameter("nome", query)
                     .build();
             URL requestURL = new URL(climaURI.toString());

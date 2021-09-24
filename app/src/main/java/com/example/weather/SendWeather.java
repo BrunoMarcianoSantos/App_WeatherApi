@@ -244,7 +244,7 @@ public class SendWeather extends AppCompatActivity {
         btnsendapi.setOnClickListener(v -> SendApi());
     }
 
-    public void SendApi(){
+    /*public void SendApi(){
         tempapiatualf = String.valueOf(tempapiatual);
         condapif = condapi.getText().toString();
         tempapif = tempapi.getText().toString();
@@ -288,9 +288,75 @@ public class SendWeather extends AppCompatActivity {
                 Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
             }
         }
+    }*/
+
+    public void SendApi(){
+        condapif = condapi.getText().toString();
+        tempapif = tempapi.getText().toString();
+        if (condapif.equals("Correto")) {
+            try {
+                if (tempapif.length() != 0) {
+                    condwapi = null;
+                    condapif = null;
+                    int tempint = Integer.parseInt(tempapif);
+                    MyTaskParams params = new MyTaskParams(tempapiatual, tempapif, namewapi, condwapi, condapif);
+                    new HTTPReqTask().execute(params);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
+        } else if (tempapif.equals("Correto")){
+            try {
+                if (condapif.length() != 0) {
+                    tempapiatual = 0;
+                    tempapif = null;
+                    //String[] dadoscoletados = {namewapi, condwapi, condapif, tempapif};
+                    MyTaskParams params = new MyTaskParams(tempapiatual, tempapif, namewapi, condwapi, condapif);
+                    new HTTPReqTask().execute(params);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
+        } else {
+            try {
+                if (condapif.length() != 0 && tempapif.length() != 0) {
+                    MyTaskParams params = new MyTaskParams(tempapiatual, tempapif, namewapi, condwapi, condapif);
+                    new HTTPReqTask().execute(params);
+                } else {
+                    Toast.makeText(this, "Preencha todos os dados!", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Erro: " + e, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
-    private class HTTPReqTask extends AsyncTask<String, Void, Void> {
+    private static class MyTaskParams
+    {
+        int tempapi;
+        String tempuser;
+        String cidade;
+        String condapi;
+        String conduser;
+
+        MyTaskParams(int tempapi, String tempuser, String cidade, String condapi, String conduser)
+        {
+            this.tempapi = tempapi;
+            this.tempuser = tempuser;
+            this.cidade = cidade;
+            this.condapi = condapi;
+            this.conduser = conduser;
+        }
+    }
+
+    private class HTTPReqTask extends AsyncTask<MyTaskParams, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -298,25 +364,24 @@ public class SendWeather extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(String... params) {
+        protected Void doInBackground(MyTaskParams... params) {
             HttpURLConnection urlConnection = null;
-            String nameapi, condapi, tempapi, conduser, tempuser, qurl;
-            nameapi = params[0];
-            condapi = params[1];
-            tempapi = params[2];
-            conduser = params[3];
-            tempuser = params[4];
-            qurl = params[5];
+            String nameapi, condapi, conduser, tempuser; int tempapi;
+            nameapi = params[0].cidade;
+            condapi = params[1].condapi;
+            tempapi = params[2].tempapi;
+            conduser = params[3].conduser;
+            tempuser = params[4].tempuser;
 
             try {
                 JsonObject postData = new JsonObject();
-                postData.addProperty("cidade", nameapi);
-                postData.addProperty("condapi", condapi);
-                postData.addProperty("tempapi", tempapi);
-                postData.addProperty("conduser", conduser);
-                postData.addProperty("tempuser", tempuser);
+                postData.addProperty("nome_cidade", nameapi);
+                postData.addProperty("cond_api", condapi);
+                postData.addProperty("temp_api", tempapi);
+                postData.addProperty("cond_user", conduser);
+                postData.addProperty("sens_user", tempuser);
 
-                URL url = new URL(qurl);
+                URL url = new URL("http://192.168.15.9:51067/Home/Send");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestMethod("POST");
