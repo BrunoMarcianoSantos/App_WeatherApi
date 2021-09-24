@@ -368,10 +368,10 @@ public class SendWeather extends AppCompatActivity {
             HttpURLConnection urlConnection = null;
             String nameapi, condapi, conduser, tempuser; int tempapi;
             nameapi = params[0].cidade;
-            condapi = params[1].condapi;
-            tempapi = params[2].tempapi;
-            conduser = params[3].conduser;
-            tempuser = params[4].tempuser;
+            condapi = params[0].condapi;
+            tempapi = params[0].tempapi;
+            conduser = params[0].conduser;
+            tempuser = params[0].tempuser;
 
             try {
                 JsonObject postData = new JsonObject();
