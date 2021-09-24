@@ -7,6 +7,6 @@ Api utilizada: https://openweathermap.org/current
 
 Vídeo com a Explicação do Código do app: https://www.youtube.com/watch?v=t1T_ZFrlf-s
 
-Vídeos explicando a Api realizada por nós: 
+Vídeos explicando a Api e banco de dados realizada por nós: https://www.youtube.com/watch?v=bzoYjhAgboc, https://www.youtube.com/watch?v=X8hD6zhUz_8
 
 Vídeo do app funcionando: 
